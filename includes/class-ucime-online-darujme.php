@@ -161,6 +161,7 @@ class Ucime_Online_Darujme {
 		$this->loader->add_action('admin_menu', $plugin_admin, 'ucime_online_darujme_plugin_menu');
 	}
 
+	
 	/**
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.

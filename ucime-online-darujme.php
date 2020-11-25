@@ -26,8 +26,8 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if (!defined('WPINC')) {
+    die;
 }
 
 /**
@@ -35,36 +35,38 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'UCIME_ONLINE_DARUJME_VERSION', '1.0.0' );
+define('UCIME_ONLINE_DARUJME_VERSION', '1.0.0');
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-ucime-online-darujme-activator.php
  */
-function activate_ucime_online_darujme() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-ucime-online-darujme-activator.php';
-	$activator = newUcime_Online_Darujme_Activator();
-	$activator->activate();
+function activate_ucime_online_darujme()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-ucime-online-darujme-activator.php';
+    $activator = newUcime_Online_Darujme_Activator();
+    $activator->activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-ucime-online-darujme-deactivator.php
  */
-function deactivate_ucime_online_darujme() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-ucime-online-darujme-deactivator.php';
-	$deactivator = new Ucime_Online_Darujme_Deactivator();
-	$deactivator->deactivate();
+function deactivate_ucime_online_darujme()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-ucime-online-darujme-deactivator.php';
+    $deactivator = new Ucime_Online_Darujme_Deactivator();
+    $deactivator->deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_ucime_online_darujme' );
-register_deactivation_hook( __FILE__, 'deactivate_ucime_online_darujme' );
+register_activation_hook(__FILE__, 'activate_ucime_online_darujme');
+register_deactivation_hook(__FILE__, 'deactivate_ucime_online_darujme');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-ucime-online-darujme.php';
+require plugin_dir_path(__FILE__) . 'includes/class-ucime-online-darujme.php';
 
 /**
  * Begins execution of the plugin.
@@ -75,10 +77,11 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-ucime-online-darujme.php';
  *
  * @since    1.0.0
  */
-function run_ucime_online_darujme() {
+function run_ucime_online_darujme()
+{
 
-	$plugin = new Ucime_Online_Darujme();
-	$plugin->run();
+    $plugin = new Ucime_Online_Darujme();
+    $plugin->run();
 
 }
 run_ucime_online_darujme();

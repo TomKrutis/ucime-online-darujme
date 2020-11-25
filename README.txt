@@ -1,5 +1,5 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
+=== UcimeOnline Darujme Plugin ===
+Contributors: Tomas Krutis
 Donate link: https://efox.cloud
 Tags: comments, spam
 Requires at least: 3.0.1

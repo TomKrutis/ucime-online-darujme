@@ -43,5 +43,4 @@ class Ucime_Online_Darujme_i18n {
 	}
 
 
-
 }
