@@ -36,6 +36,8 @@ if (!defined('WPINC')) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define('UCIME_ONLINE_DARUJME_VERSION', '1.0.0');
+define('UCIME_ONLINE_DARUJME_URL', plugin_dir_url(__FILE__));
+define('UCIME_ONLINE_DARUJME_PATH', plugin_dir_path(__FILE__));
 
 /**
  * The code that runs during plugin activation.
@@ -44,7 +46,7 @@ define('UCIME_ONLINE_DARUJME_VERSION', '1.0.0');
 function activate_ucime_online_darujme()
 {
     require_once plugin_dir_path(__FILE__) . 'includes/class-ucime-online-darujme-activator.php';
-    $activator = newUcime_Online_Darujme_Activator();
+    $activator = new Ucime_Online_Darujme_Activator();
     $activator->activate();
 }
 
