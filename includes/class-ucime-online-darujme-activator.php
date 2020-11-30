@@ -33,7 +33,10 @@ class Ucime_Online_Darujme_Activator
     public function activate()
     {
         $this->create_table_gifts();
-        $this->insert_gifts_to_db();
+
+        if ($this->gifts_table_is_empty()) {
+            $this->insert_gifts_to_db();
+        }
 
         // TODO volání vytvoření tabulky na položky dárku
     }
@@ -86,6 +89,25 @@ class Ucime_Online_Darujme_Activator
         $wpdb->insert($this->get_gifts_table_name(), array('amount_for_itself' => 600, 'amount_for_company' => 10000, 'default_counter' => 0, 'gift_name' => 'Dárek 1', 'highlight' => false));
         $wpdb->insert($this->get_gifts_table_name(), array('amount_for_itself' => 1800, 'amount_for_company' => 30000, 'default_counter' => 1, 'gift_name' => 'Dárek 2', 'highlight' => false));
         $wpdb->insert($this->get_gifts_table_name(), array('amount_for_itself' => 10000, 'amount_for_company' => 50000, 'default_counter' => 0, 'gift_name' => 'Dárek 3', 'highlight' => true));
+    }
+
+    /**
+     * Kontroluje jestli je tabulka s dárky prázdná.
+     *
+     * @since   1.0.1
+     * @return  bool    Vrací true když je tabulka prázdná.
+     */
+    protected function gifts_table_is_empty()
+    {
+        global $wpdb;
+
+        $result = $wpdb->get_results("SELECT * FROM " . $this->get_gifts_table_name());
+
+        if (count($result) == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

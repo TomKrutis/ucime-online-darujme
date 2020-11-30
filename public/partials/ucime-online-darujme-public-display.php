@@ -15,15 +15,13 @@
 
 <div class="uod-main-container">
 
-    <h3 class="uod-main-heading">Darujte možnost vzdělávat se online</h3>
-
-    <div class="uod-itself-or-company-box">
+    <!--<div class="uod-itself-or-company-box">
         <span class="uod-label">Přispívám: </span>
 
         <button type="button" id="uod-itself-button" class="uod-itself-button">ZA SEBE</button>
         <button type="button" id="uod-company-button" class="uod-company-button">ZA FIRMU</button>
 
-    </div>
+    </div>-->
 
     <div class="container-fluid uod-gifts-container">
         <div class="row">
