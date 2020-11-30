@@ -14,7 +14,6 @@
 }
 
 .uod-itself-or-company-box {
-    
     margin-left: 20px;
 }
 
@@ -135,18 +134,24 @@
     font-size: 42px;
     line-height: 70px;
     color: #252525;
+    white-space: nowrap;
 }
 
 .uod-want-to-contribute-box {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
     text-align: right;
+    justify-content: flex-end;
     margin-top: 30px;
+    flex-wrap: nowrap;
 }
 
 .uod-want-to-contribute-box a {
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
+    /*font-size: 24px;
     line-height: 28px;
     text-align: center;
     color: #FFFFFF;
@@ -155,7 +160,22 @@
     padding-top: 20px;
     padding-bottom: 20px;
     background: #018F8F;
-    border-radius: 20px;
+    border-radius: 20px;*/
+    color: #FFFFFF;
+    background-color: #018f8f;
+    border: 1px solid #018f8f;
+    padding: 10px 16px;
+    font-size: 20px;
+    width: 300px;
+    height: 70px;
+    text-align: center;
+    margin-left: 0px;
+    margin-top: 0px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px 0px #018f8f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .uod-want-to-contribute-box a:hover {

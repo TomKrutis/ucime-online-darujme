@@ -29,10 +29,11 @@
             <?php
 foreach ($gifts as $index => $data) {
     ?>
-            <div class="col-sm-4">
+            <div class="col-sm-4 mb-3">
                 <div class="<?php echo $data->highlight ? 'uod-rectangle-highlight' : 'uod-rectangle'; ?>">
                     <div class="uod-amount">
-                        <span class="uod-amount-value"><?php echo number_format($data->amount_for_itself, 0, ',', ' '); ?></span> 
+                        <span
+                            class="uod-amount-value"><?php echo number_format($data->amount_for_itself, 0, ',', ' '); ?></span>
                         Kč
                     </div>
                     <input type="hidden" class="uod_amount_itself" value="<?php echo $data->amount_for_itself ?>">
@@ -93,8 +94,8 @@ foreach ($gifts as $index => $data) {
 
 
                     <div class="uod-counter-box">
-                        <button class="uod-minus">-</button> 
-                        <span class="uod-counter"><?php echo $data->default_counter ?></span> 
+                        <button class="uod-minus">-</button>
+                        <span class="uod-counter"><?php echo $data->default_counter ?></span>
                         <button class="uod-plus">+</button>
                     </div>
 
@@ -109,11 +110,14 @@ foreach ($gifts as $index => $data) {
 
     <div class="uod-total-amount-box">
         <span class="uod-total-amount-label">Celkem přispívám: </span>
+
         <span id="uod-total-amount" class="uod-total-amount">1 800</span> <span class="uod-total-amount">Kč</span>
+
     </div>
 
     <div class="uod-want-to-contribute-box">
-        <a id="uod-contribute-link" href="https://www.darujme.cz/darovat/1203574?amount=1800" target="_blank">CHCI PŘISPĚT</a>
+        <a id="uod-contribute-link" href="https://www.darujme.cz/darovat/1203574?amount=1800" target="_blank">CHCI
+            PŘISPĚT</a>
     </div>
 
 </div>
