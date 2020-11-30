@@ -42,6 +42,15 @@ class Ucime_Online_Darujme_Public
     private $version;
 
     /**
+     * Aktivátor pluginu.
+     *
+     * @since   1.0.0
+     * @access  private
+     * @var     Ucime_Online_Darujme_Activator  $activator  Aktivátor pluginu
+     */
+    private $activator;
+
+    /**
      * Initialize the class and set its properties.
      *
      * @since    1.0.0
@@ -54,6 +63,9 @@ class Ucime_Online_Darujme_Public
         $this->plugin_name = $plugin_name;
         $this->version = $version;
 
+        require_once UCIME_ONLINE_DARUJME_PATH . 'includes/class-ucime-online-darujme-activator.php';
+        $this->activator = new Ucime_Online_Darujme_Activator();
+
     }
 
     /**
@@ -64,19 +76,15 @@ class Ucime_Online_Darujme_Public
     public function enqueue_styles()
     {
 
-        /**
-         * This function is provided for demonstration purposes only.
-         *
-         * An instance of this class should be passed to the run() function
-         * defined in Ucime_Online_Darujme_Loader as all of the hooks are defined
-         * in that particular class.
-         *
-         * The Ucime_Online_Darujme_Loader will then create the relationship
-         * between the defined hooks and the functions defined in this
-         * class.
-         */
-
         wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/ucime-online-darujme-public.css', array(), $this->version, 'all');
+
+        // Bootstrap CDN CSS
+        wp_register_style('ucime-online-darujme-bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
+        wp_enqueue_style('ucime-online-darujme-bootstrap');
+
+        // DataTables CDN CSS
+        wp_register_style('ucime-online-darujme-datatables', '//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css');
+        wp_enqueue_style('ucime-online-darujme-datatables');
 
     }
 
@@ -88,20 +96,45 @@ class Ucime_Online_Darujme_Public
     public function enqueue_scripts()
     {
 
-        /**
-         * This function is provided for demonstration purposes only.
-         *
-         * An instance of this class should be passed to the run() function
-         * defined in Ucime_Online_Darujme_Loader as all of the hooks are defined
-         * in that particular class.
-         *
-         * The Ucime_Online_Darujme_Loader will then create the relationship
-         * between the defined hooks and the functions defined in this
-         * class.
-         */
-
         wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/ucime-online-darujme-public.js', array('jquery'), $this->version, false);
 
+        // Bootstrap CDN JS
+        wp_register_script('ucime-online-darujme-bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js');
+        wp_enqueue_script('ucime-online-darujme-bootstrap');
+
+        // DataTables CDN JS
+        wp_register_script('ucime-online-darujme-datatables', '//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js');
+        wp_enqueue_script('ucime-online-darujme-datatables');
+
+    }
+
+    /**
+     * Function for shortcode with Darujme integration.
+     *
+     * @since   1.0.0
+     */
+    public function shortcode_ucime_online_darujme($atts)
+    {
+        global $wpdb;
+
+        $gifts = $wpdb->get_results(
+            $wpdb->prepare(
+                'SELECT * FROM ' . $this->activator->get_gifts_table_name(), ''
+            )
+        );
+
+        //echo '<pre>';
+        //print_r($gifts);
+
+        ob_start();
+
+        require_once UCIME_ONLINE_DARUJME_PATH . 'public/partials/ucime-online-darujme-public-display.php';
+        $template = ob_get_contents();
+
+        ob_end_clean();
+
+        // tady nesmí být echo, ale return - jinak Oxygen Builder nevyrenderuje shortcode!!!
+        return $template;
     }
 
 }

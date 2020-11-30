@@ -1,32 +1,95 @@
-(function ($) {
-	'use strict';
 
-	/**
-	 * All of the code for your public-facing JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
-	 *
-	 * This enables you to define handlers, for when the DOM is ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * When the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
-	 */
+jQuery(function () {
 
-})(jQuery);
+	jQuery(".uod-itself-button").click(function (event) {
+
+		// přepnutí tlačítek
+		jQuery("#uod-itself-button").addClass("uod-itself-button").removeClass("uod-company-button");
+		jQuery("#uod-company-button").addClass("uod-company-button").removeClass("uod-itself-button");
+
+		let amounts = jQuery(".uod-amount-value");
+
+		amounts.each(function (index, element) {
+			jQuery(this).text(numberWithSpaces(jQuery(this).closest(".col-sm-4").find(".uod_amount_itself").val()));
+		});
+
+		// vynulování counterů
+		jQuery(".uod-counter").text(0);
+
+		// vynulování celkové částky
+		jQuery("#uod-total-amount").text(0);
+
+	});
+
+	jQuery(".uod-company-button").click(function (event) {
+		// přepnutí tlačítek
+		jQuery("#uod-company-button").addClass("uod-itself-button").removeClass("uod-company-button");
+		jQuery("#uod-itself-button").addClass("uod-company-button").removeClass("uod-itself-button");
+
+		let amounts = jQuery(".uod-amount-value");
+
+		amounts.each(function (index, element) {
+			jQuery(this).text(numberWithSpaces(jQuery(this).closest(".col-sm-4").find(".uod_amount_company").val()));
+		});
+
+		// vynulování counterů
+		jQuery(".uod-counter").text(0);
+
+		// vynulování celkové částky
+		jQuery("#uod-total-amount").text(0);
+
+		jQuery("#uod-contribute-link").attr("href", generateDarujmeLink(0));
+	});
+
+	jQuery(".uod-minus").click(function () {
+
+		let totalAmount = jQuery("#uod-total-amount");
+		let totalAmountValue = parseInt(numberWithoutSpace(totalAmount.text()));
+
+		let counter = jQuery(this).closest(".uod-counter-box").find(".uod-counter");
+		let counterValue = parseInt(counter.text());
+
+		let amount = numberWithoutSpace(jQuery(this).closest(".col-sm-4").find(".uod-amount-value").text());
+
+		if (counterValue <= 0) {
+			return;
+		}
+
+		counter.text(counterValue - 1);
+
+		let newTotalAmount = totalAmountValue - amount;
+		totalAmount.text(numberWithSpaces(newTotalAmount));
+
+		jQuery("#uod-contribute-link").attr("href", generateDarujmeLink(newTotalAmount));
+	});
+
+	jQuery(".uod-plus").click(function (event) {
+
+		let totalAmount = jQuery("#uod-total-amount");
+		let totalAmountValue = parseInt(numberWithoutSpace(totalAmount.text()));
+
+		let counter = jQuery(this).closest(".uod-counter-box").find(".uod-counter");
+		let counterValue = parseInt(counter.text());
+
+		let amount = numberWithoutSpace(jQuery(this).closest(".col-sm-4").find(".uod-amount-value").text());
+
+		counter.text(counterValue + 1);
+
+		let newTotalAmount = totalAmountValue + parseInt(amount);
+		totalAmount.text(numberWithSpaces(newTotalAmount));
+
+		jQuery("#uod-contribute-link").attr("href", generateDarujmeLink(newTotalAmount));
+	});
+});
+
+function numberWithSpaces(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
+function numberWithoutSpace(x) {
+	return x.toString().replace(/\s/g, '');
+}
+
+function generateDarujmeLink(amount) {
+	return "https://www.darujme.cz/darovat/1203574?amount=" + parseInt(numberWithoutSpace(amount));
+}
