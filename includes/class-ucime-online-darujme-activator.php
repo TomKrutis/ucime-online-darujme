@@ -86,8 +86,8 @@ class Ucime_Online_Darujme_Activator
     {
         global $wpdb;
 
-        $wpdb->insert($this->get_gifts_table_name(), array('amount_for_itself' => 600, 'amount_for_company' => 10000, 'default_counter' => 0, 'gift_name' => 'Dárek 1', 'highlight' => false));
-        $wpdb->insert($this->get_gifts_table_name(), array('amount_for_itself' => 1800, 'amount_for_company' => 30000, 'default_counter' => 1, 'gift_name' => 'Dárek 2', 'highlight' => false));
+        $wpdb->insert($this->get_gifts_table_name(), array('amount_for_itself' => 600, 'amount_for_company' => 10000, 'default_counter' => 1, 'gift_name' => 'Dárek 1', 'highlight' => false));
+        $wpdb->insert($this->get_gifts_table_name(), array('amount_for_itself' => 1800, 'amount_for_company' => 30000, 'default_counter' => 0, 'gift_name' => 'Dárek 2', 'highlight' => false));
         $wpdb->insert($this->get_gifts_table_name(), array('amount_for_itself' => 10000, 'amount_for_company' => 50000, 'default_counter' => 0, 'gift_name' => 'Dárek 3', 'highlight' => true));
     }
 

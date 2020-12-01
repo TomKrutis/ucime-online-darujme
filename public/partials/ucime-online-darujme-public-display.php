@@ -112,7 +112,15 @@ foreach ($gifts as $index => $data) {
         <span class="uod-total-amount-label">Celkem přispívám: </span>
 
         <span class="uod-total-amount-span">
-            <span id="uod-total-amount" class="uod-total-amount">1 800</span> <span class="uod-total-amount">Kč</span>
+            <span id="uod-total-amount" class="uod-total-amount">
+                <?php 
+                $amount = 0;
+                foreach ($gifts as $index => $data){
+                    $amount += $data->amount_for_itself * $data->default_counter;
+                }
+                echo number_format($amount, 0, ',', ' ');
+                ?>
+            </span> <span class="uod-total-amount">Kč</span>
         </span>
 
     </div>
