@@ -111,7 +111,9 @@ foreach ($gifts as $index => $data) {
     <div class="uod-total-amount-box">
         <span class="uod-total-amount-label">Celkem přispívám: </span>
 
-        <span id="uod-total-amount" class="uod-total-amount">1 800</span> <span class="uod-total-amount">Kč</span>
+        <span class="uod-total-amount-span">
+            <span id="uod-total-amount" class="uod-total-amount">1 800</span> <span class="uod-total-amount">Kč</span>
+        </span>
 
     </div>
 

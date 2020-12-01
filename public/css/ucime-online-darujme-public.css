@@ -122,7 +122,7 @@
     font-family: Mukta Mahee;
     font-style: normal;
     font-weight: 500;
-    font-size: 32px;
+    font-size: 28px;
     line-height: 53px;
     color: #252525;
 }
@@ -131,10 +131,26 @@
     font-family: Mukta Mahee;
     font-style: normal;
     font-weight: bold;
-    font-size: 42px;
+    font-size: 38px;
     line-height: 70px;
     color: #252525;
     white-space: nowrap;
+}
+
+.uod-total-amount-span {
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 600px) {
+    .uod-total-amount-label {
+        font-size: 18px;
+    }
+    .uod-total-amount-box {
+        margin-top: 20px;
+    }
+    .uod-total-amount {
+        font-size: 28px;
+    }
 }
 
 .uod-want-to-contribute-box {
@@ -166,8 +182,8 @@
     border: 1px solid #018f8f;
     padding: 10px 16px;
     font-size: 20px;
-    width: 300px;
-    height: 70px;
+    width: 250px;
+    height: 60px;
     text-align: center;
     margin-left: 0px;
     margin-top: 0px;
@@ -180,4 +196,15 @@
 
 .uod-want-to-contribute-box a:hover {
     color: #EDEDED;
+}
+
+@media screen and (max-width: 600px) {
+    .uod-want-to-contribute-box a {
+        font-size: 15px;
+        width: 200px;
+        height: 50px;
+    }
+    .uod-want-to-contribute-box {
+        margin-top: 15px;
+    }
 }
