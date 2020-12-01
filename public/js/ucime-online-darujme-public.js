@@ -10,7 +10,7 @@ jQuery(function () {
 		let amounts = jQuery(".uod-amount-value");
 
 		amounts.each(function (index, element) {
-			jQuery(this).text(numberWithSpaces(jQuery(this).closest(".col-sm-4").find(".uod_amount_itself").val()));
+			jQuery(this).text(numberWithSpaces(jQuery(this).closest(".col-md-4").find(".uod_amount_itself").val()));
 		});
 
 		// vynulování counterů
@@ -29,7 +29,7 @@ jQuery(function () {
 		let amounts = jQuery(".uod-amount-value");
 
 		amounts.each(function (index, element) {
-			jQuery(this).text(numberWithSpaces(jQuery(this).closest(".col-sm-4").find(".uod_amount_company").val()));
+			jQuery(this).text(numberWithSpaces(jQuery(this).closest(".col-md-4").find(".uod_amount_company").val()));
 		});
 
 		// vynulování counterů
@@ -49,7 +49,7 @@ jQuery(function () {
 		let counter = jQuery(this).closest(".uod-counter-box").find(".uod-counter");
 		let counterValue = parseInt(counter.text());
 
-		let amount = numberWithoutSpace(jQuery(this).closest(".col-sm-4").find(".uod-amount-value").text());
+		let amount = numberWithoutSpace(jQuery(this).closest(".col-md-4").find(".uod-amount-value").text());
 
 		if (counterValue <= 0) {
 			return;
@@ -71,7 +71,7 @@ jQuery(function () {
 		let counter = jQuery(this).closest(".uod-counter-box").find(".uod-counter");
 		let counterValue = parseInt(counter.text());
 
-		let amount = numberWithoutSpace(jQuery(this).closest(".col-sm-4").find(".uod-amount-value").text());
+		let amount = numberWithoutSpace(jQuery(this).closest(".col-md-4").find(".uod-amount-value").text());
 
 		counter.text(counterValue + 1);
 

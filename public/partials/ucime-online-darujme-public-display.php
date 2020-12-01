@@ -29,7 +29,7 @@
             <?php
 foreach ($gifts as $index => $data) {
     ?>
-            <div class="col-sm-4 mb-3">
+            <div class="col-md-4 mb-3">
                 <div class="<?php echo $data->highlight ? 'uod-rectangle-highlight' : 'uod-rectangle'; ?>">
                     <div class="uod-amount">
                         <span
