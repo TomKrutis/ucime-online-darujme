@@ -123,11 +123,30 @@ foreach ($gifts as $index => $data) {
             </span> <span class="uod-total-amount">Kč</span>
         </span>
 
+        <div class="uod-edit-amount-box">
+            <a id="uod-edit-amount-link" class="uod-edit-amount-link">Upravit částku</a>
+
+            <div id="uod-edit-amount-input-box" class="uod-edit-amount-input-box row" style="display:none">
+                <div class="col-12">
+                    <div class="float-right">
+                        <label class="uod-edit-amount-input-label" for="uod-edit-amount-input">Napište prosím
+                            částku,<br /> kterou chcete přispět.</label>
+                        <input type="number" class="form-control" id="uod-edit-amount-input" min="1"
+                            oninput="validity.valid||(value='');">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
     <div class="uod-want-to-contribute-box">
-        <a id="uod-contribute-link" href="https://www.darujme.cz/darovat/1203574?amount=1800" target="_blank">CHCI
-            PŘISPĚT</a>
+
+        <a id="uod-contribute-link" href="https://www.darujme.cz/darovat/1203574?amount=<?php echo $amount; ?>"
+            target="_blank">
+            CHCI PŘISPĚT
+        </a>
     </div>
 
 </div>

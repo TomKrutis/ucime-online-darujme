@@ -80,6 +80,43 @@ jQuery(function () {
 
 		jQuery("#uod-contribute-link").attr("href", generateDarujmeLink(newTotalAmount));
 	});
+
+	jQuery("#uod-edit-amount-link").click(function () {
+
+		let totalAmount = jQuery("#uod-total-amount");
+		let totalAmountValue = parseInt(numberWithoutSpace(totalAmount.text()));
+
+		let editLink = jQuery("#uod-edit-amount-link");
+
+		let editInputBox = jQuery("#uod-edit-amount-input-box");
+
+		// skrytí taláčíka na upravu částky
+		editLink.hide();
+		// zobrazení boxu s inputem
+		editInputBox.show();
+
+		// zakázání tlačítek na plus a mínus
+		jQuery(".uod-plus").prop('disabled', true);
+		jQuery(".uod-minus").prop('disabled', true);
+
+	});
+
+	jQuery("#uod-edit-amount-input").keyup(function () {
+
+		let totalAmount = jQuery("#uod-total-amount");
+
+		let newTotalAmount = jQuery("#uod-edit-amount-input").val();
+
+		if (!newTotalAmount) {
+			newTotalAmount = 0;
+		}
+
+		totalAmount.text(numberWithSpaces(newTotalAmount));
+
+		jQuery("#uod-contribute-link").attr("href", generateDarujmeLink(newTotalAmount));
+
+	});
+
 });
 
 function numberWithSpaces(x) {
