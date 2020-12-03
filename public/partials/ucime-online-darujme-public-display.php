@@ -131,7 +131,7 @@ foreach ($gifts as $index => $data) {
                     <div class="float-right">
                         <label class="uod-edit-amount-input-label" for="uod-edit-amount-input">Napište prosím
                             částku,<br /> kterou chcete přispět.</label>
-                        <input type="number" class="form-control" id="uod-edit-amount-input" min="1"
+                        <input type="number" class="form-control" id="uod-edit-amount-input" min="1" max="9999999"
                             oninput="validity.valid||(value='');">
                     </div>
                 </div>
